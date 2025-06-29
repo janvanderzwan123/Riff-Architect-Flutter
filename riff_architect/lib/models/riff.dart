@@ -1,10 +1,15 @@
 class Riff {
-  final int? id;
-  final String name;
-  final String category;
-  final String filePath;
+  int? id;
+  String name;
+  String category;
+  String filePath;
 
-  Riff({this.id, required this.name, required this.category, required this.filePath});
+  Riff({
+    this.id,
+    required this.name,
+    required this.category,
+    required this.filePath,
+  });
 
   Map<String, dynamic> toMap() {
     return {
@@ -21,6 +26,20 @@ class Riff {
       name: map['name'],
       category: map['category'],
       filePath: map['file_path'],
+    );
+  }
+
+  Riff copyWith({
+    int? id,
+    String? name,
+    String? category,
+    String? filePath,
+  }) {
+    return Riff(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      category: category ?? this.category,
+      filePath: filePath ?? this.filePath,
     );
   }
 }

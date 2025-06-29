@@ -17,4 +17,10 @@ class RiffDao {
     final db = await RiffDatabase.db;
     return await db.delete('riffs', where: 'id = ?', whereArgs: [id]);
   }
+
+  static Future<List<String>> getDistinctCategories() async {
+    final db = await RiffDatabase.db;
+    final result = await db.rawQuery('SELECT DISTINCT category FROM riffs');
+    return result.map((row) => row['category'] as String).toList();
+  }
 }
